@@ -9,6 +9,7 @@ Este proyecto es una API construida con Laravel que utiliza JWT (JSON Web Tokens
 - [Laravel](https://laravel.com/docs) >= 8.x
 - [MySQL](https://www.mysql.com/)
 - [JWT-Auth](https://jwt-auth.readthedocs.io/en/docs/) para la autenticación
+- [Docker](https://www.docker.com/) para la creación de la base de datos
 
 ## Instalación
 
@@ -40,24 +41,32 @@ Este proyecto es una API construida con Laravel que utiliza JWT (JSON Web Tokens
 
 5. **Configura la base de datos:**
 
-    Asegúrate de configurar los detalles de la base de datos en el archivo `.env`. Por ejemplo:
+    Asegúrate de configurar los detalles de la base de datos en el archivo `.env` de acuerdo al contenedor docker preconfigurado:
 
     ```env
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=nombre_de_base_de_datos
+    DB_DATABASE=million_solutions
     DB_USERNAME=usuario
-    DB_PASSWORD=contraseña
+    DB_PASSWORD=admin123
     ```
 
-6. **Ejecuta las migraciones:**
+6. **Contenedor de base de datos:**
+
+    Ejecuta el contenedor docker con la Base de datos creada para el proyecto:
+
+    ```bash
+    sudo docker compose up mysql
+    ```
+
+7. **Ejecuta las migraciones:**
 
     ```bash
     php artisan migrate
     ```
 
-7. **Inicia el servidor de desarrollo:**
+8. **Inicia el servidor de desarrollo:**
 
     ```bash
     php artisan serve
